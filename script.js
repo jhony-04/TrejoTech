@@ -34,8 +34,8 @@ AOS.init({
 
 new Typed("#nombre", {
     strings: [
-        "JHONY TREJO",
-       /* "INGENIERO EN SISTEMAS",
+       /*  "JHONY TREJO",
+       "INGENIERO EN SISTEMAS",
         "DESARROLLADOR WEB",
         "ESPECIALISTA EN FIBRA ÓPTICA"*/
     ],
@@ -70,4 +70,51 @@ window.addEventListener("scroll", () => {
     } else {
         header.classList.remove("scrolled");
     }
+});
+
+
+const contadores = document.querySelectorAll(".contador");
+
+const iniciarContadores = () => {
+  contadores.forEach(contador => {
+    const objetivo = +contador.dataset.target;
+    let numero = 0;
+
+    const actualizar = () => {
+      const incremento = Math.ceil(objetivo / 80);
+
+      numero += incremento;
+
+      if (numero >= objetivo) {
+        contador.innerText = objetivo + "+";
+      } else {
+        contador.innerText = numero;
+        requestAnimationFrame(actualizar);
+      }
+    };
+
+    actualizar();
+  });
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      iniciarContadores();
+      observer.disconnect();
+    }
+  });
+});
+
+const estadisticas = document.querySelector("#estadisticas");
+
+if (estadisticas) {
+    observer.observe(estadisticas);
+}
+
+const menu = document.querySelector(".menu-toggle");
+const menuLinks = document.querySelector("nav ul");
+
+menu.addEventListener("click", () => {
+    menuLinks.classList.toggle("active");
 });
