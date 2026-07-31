@@ -118,3 +118,31 @@ const menuLinks = document.querySelector("nav ul");
 menu.addEventListener("click", () => {
     menuLinks.classList.toggle("active");
 });
+
+
+emailjs.init("3jZn9JulRHy5KfVo9");
+
+const formulario = document.getElementById("contact-form");
+
+formulario.addEventListener("submit", function(e){
+    e.preventDefault();
+
+    emailjs.sendForm(
+        "service_6tdbh0a",
+        "template_go9xy6z",
+        this
+    ).then(() => {
+
+        alert("✅ Mensaje enviado correctamente.");
+
+        formulario.reset();
+
+    }).catch((error)=>{
+
+        alert("❌ Ocurrió un error al enviar.");
+
+        console.log(error);
+
+    });
+
+});

@@ -547,15 +547,15 @@
 
     <h2>📞 Contáctame</h2>
 
-    <form class="formulario">
+    <form id="contact-form" class="formulario">
 
-        <input type="text" placeholder="Nombre completo" required>
+        <input type="text" name="name" placeholder="Nombre completo" required>
 
-        <input type="email" placeholder="Correo electrónico" required>
+        <input type="email" name="email" placeholder="Correo electrónico" required>
 
-        <input type="tel" placeholder="Teléfono">
+        <input type="tel" name="telefono" placeholder="Teléfono">
 
-        <textarea placeholder="Escribe tu mensaje..." rows="6"></textarea>
+        <textarea name="message" placeholder="Escribe tu mensaje..." rows="6" required></textarea>
 
         <button type="submit">Enviar Mensaje</button>
 
@@ -569,7 +569,7 @@
 
 <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
 <script src="script.js"></script>
 
@@ -606,6 +606,7 @@
     <p>© 2026 TrejoTech | Todos los derechos reservados.</p>
 
 </footer>
+
 
 </body>
 
